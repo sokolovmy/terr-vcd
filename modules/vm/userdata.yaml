@@ -1,0 +1,22 @@
+#cloud-config
+locale: C.UTF-8
+users:
+- name: terraform
+  gecos: terraform
+  groups: sudo
+  # plain_text_passwd: your_plain_text_password
+  # to make passwd use cmd: echo your_password | mkpasswd --method=SHA-512 --rounds=4096
+  # passwd:
+  # lock_passwd: false
+  type: text
+  ssh_authorized_keys:
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINzeEvXJDy96RFc7cSbemCyZJlNhNa4j4zRW57Z5XDIW pd02-t-zabbix-terraform
+  shell: /bin/bash
+  sudo: ALL=(ALL) NOPASSWD:ALL
+# chpasswd:
+#   expire: false
+apt_update: true
+apt_upgrade: true
+runcmd:
+  # - sed -i -e 's/172\.23\.48\.18/8.8.8.8/' -e 's/172\.23\.48\.17/8.8.4.4/' /etc/netplan/99-netcfg-vmware.yaml
+  # - netplan apply
