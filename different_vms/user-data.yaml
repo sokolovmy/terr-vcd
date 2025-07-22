@@ -1,0 +1,31 @@
+#cloud-config
+locale: C.UTF-8
+users:
+- name: terraform
+  gecos: terraform
+  groups: sudo
+  type: text
+  ssh_authorized_keys:
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINzeEvXJDy96RFc7cSbemCyZJlNhNa4j4zRW57Z5XDIW pd02-t-zabbix-terraform
+  shell: /bin/bash
+  sudo: ALL=(ALL) NOPASSWD:ALL
+
+- name: adm-mysokolov
+  gecos: Maxim Sokolov
+  groups: sudo
+  type: text
+  ssh_authorized_keys:
+    - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILyy4kuqCO6G9kq+YCHc5iB+o4Ekeeki3/JdKSb+Y7Qh mysokolov@cloud.ru
+  shell: /bin/bash
+  sudo: ALL=(ALL) NOPASSWD:ALL
+
+
+runcmd:
+  - |
+    LATEST_VERSION=$(curl -sSL https://go.dev/VERSION?m=text | grep '^go')
+    curl -sSL "https://go.dev/dl/${LATEST_VERSION}.linux-amd64.tar.gz" -o "/tmp/${LATEST_VERSION}.tar.gz"
+    rm -rf /usr/local/go
+    tar -C /usr/local -xzf "/tmp/${LATEST_VERSION}.tar.gz"
+    echo 'export PATH=$PATH:/usr/local/go/bin' > /etc/profile.d/go.sh
+    chmod +x /etc/profile.d/go.sh
+    rm -f "/tmp/${LATEST_VERSION}.tar.gz"

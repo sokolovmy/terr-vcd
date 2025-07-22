@@ -21,4 +21,5 @@ module "vms" {
   org_network_name = vcd_vapp_org_network.routed_network.org_network_name
   ip = each.value.ip
   # user_data = each.value.user_data
+  user_data = base64encode(file(each.value.user_data_file))
 }

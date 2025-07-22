@@ -10,7 +10,15 @@ vms = [
         cpus = 4
         memory = 4096
         disk = 40
-        # user_data_file = "hbz.yaml"
-        ip = "10.254.23.250"
+        user_data_file = "user-data.yaml"
+        ip = "10.254.23.240"
+    },
+    {
+        name = "dev-npvgr-app-02"
+        cpus = 4
+        memory = 4096
+        disk = 40
+        user_data_file = "user-data.yaml"
+        ip = "10.254.23.241"
     }
 ]

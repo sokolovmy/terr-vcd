@@ -47,6 +47,6 @@ variable "vms" {
     cpus = optional(number)
     memory = optional(number) # Size in Megabytes
     disk = optional(number) # Size in Gigabytes
-    user_data = optional(string)
+    user_data_file = optional(string) # Path to user-data file
   }))
 }
