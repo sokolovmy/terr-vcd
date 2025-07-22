@@ -11,13 +11,13 @@ variable "vapp_name" {
 variable "memory" {
   description = "VM memory size"
   type = number
-  default = 2048
+  default = 4096
 }
 
 variable "cpus" {
   description = "VM cpus"
   type = number
-  default = 2
+  default = 4
 }
 
 variable "disk" {
@@ -59,11 +59,13 @@ variable "vcd_catalog_name" {
 variable "vcd_catalog_template_name" {
   description = "template vm name in the vCD catalog"
   type        = string
-  default     = "Ubuntu 22.04 Server (20250620)"
+  default     = "(LVM) Ubuntu 22.04 Server (20250702)"
+
+
 }
 
 variable "default_user_data_file" {
   description = "Default user data for the vm (path to file)"
   type = string
-  default = "userdata.yaml"
+  default = "user-data.yaml"
 }

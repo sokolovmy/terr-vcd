@@ -15,8 +15,6 @@ users:
   sudo: ALL=(ALL) NOPASSWD:ALL
 # chpasswd:
 #   expire: false
-apt_update: true
-apt_upgrade: true
-runcmd:
+#runcmd:
   # - sed -i -e 's/172\.23\.48\.18/8.8.8.8/' -e 's/172\.23\.48\.17/8.8.4.4/' /etc/netplan/99-netcfg-vmware.yaml
   # - netplan apply
